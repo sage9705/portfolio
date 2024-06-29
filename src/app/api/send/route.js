@@ -1,27 +1,34 @@
 import { NextResponse } from 'next/server';
-
-const EXPRESS_SERVER_URL = 'http://localhost:5000/api/send';
+import nodemailer from 'nodemailer';
 
 export async function POST(request) {
-  const body = await request.json();
+  const { email, subject, message } = await request.json();
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    },
+  });
+
+  const mailOptions = {
+    from: email,
+    to: process.env.EMAIL_USER,
+    subject: `New Contact Form Submission: ${subject}`,
+    html: `
+      <p>You have a new contact form submission</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Subject:</strong> ${subject}</p>
+      <p><strong>Message:</strong> ${message}</p>
+    `,
+  };
 
   try {
-    const response = await fetch(EXPRESS_SERVER_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return NextResponse.json(data);
+    await transporter.sendMail(mailOptions);
+    return NextResponse.json({ status: 'Message Sent' });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error sending email:', error);
     return NextResponse.json({ status: 'ERROR', message: error.message }, { status: 500 });
   }
 }

@@ -7,30 +7,46 @@ import Image from "next/image";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
 
-    const response = await fetch("/api/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    const result = await response.json();
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    if (result.status === "Message Sent") {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
-    } else {
-      console.log("Error sending message.");
+      const result = await response.json();
+
+      if (result.status === "Message Sent") {
+        setEmailSubmitted(true);
+        e.target.reset();
+      } else {
+        setError("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("There was an error sending the message:", error);
+      setError("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -45,7 +61,6 @@ const EmailSection = () => {
           Let&apos;s Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
           I&apos;m currently looking for new opportunities, my inbox is always
           open. Whether you have a question or just want to say hi, I&apos;ll
           try my best to get back to you!
@@ -114,12 +129,14 @@ const EmailSection = () => {
             </div>
             <button
               type="submit"
+              disabled={isLoading}
               className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
-              Send Message
+              {isLoading ? "Sending..." : "Send Message"}
             </button>
           </form>
         )}
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </div>
     </section>
   );
