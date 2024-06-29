@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import GithubIcon from "../../../public/github.svg";
-import LinkedinIcon from "../../../public/linkedin.svg";
+import GithubIcon from "../../../public/images/github.svg";
+import LinkedinIcon from "../../../public/images/linkedin.svg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,27 +15,22 @@ const EmailSection = () => {
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
+    const response = await fetch("/api/send", {
       method: "POST",
-      // Tell the server we're sending JSON.
       headers: {
         "Content-Type": "application/json",
       },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+      body: JSON.stringify(data),
+    });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+    const result = await response.json();
 
-    if (response.status === 200) {
+    if (result.status === "Message Sent") {
       console.log("Message sent.");
       setEmailSubmitted(true);
+    } else {
+      console.log("Error sending message.");
     }
   };
 
