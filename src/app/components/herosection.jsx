@@ -15,6 +15,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
         >
+          <div>
           <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
             <span className="text-transparent text-white bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
               Hello, I&apos;m{" Godwin "}
@@ -34,6 +35,7 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
+          </div>
           <div>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
             I’m a software engineer with a passion for understanding how computers work. My journey began years ago, and since then, I’ve gained significant experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
@@ -68,7 +70,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-4 place-self-center mt-4 lg:mt-0"
         >
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+          <div className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
             <Image
               src="/images/hero_image.png"
               alt="hero image"
