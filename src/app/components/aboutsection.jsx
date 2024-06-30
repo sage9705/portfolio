@@ -39,28 +39,22 @@ const AboutSection = () => {
   };
 
   const renderContent = (content) => {
-    if (tab === 'skills') {
-      return (
-        <ul className="flex flex-wrap -mx-2">
-          {content.map((item, index) => (
-            <li key={index} className="px-2 w-full sm:w-1/2 md:w-1/3 mb-2">
-              <span className="flex items-center">
-                <span className="mr-2 text-green-500">&#8226;</span>
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="list-disc pl-6">
-          {content.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      );
+    if (content.length === 0) {
+      return null; // Return null if content array is empty
     }
+
+    return (
+      <ul className={tab === 'skills' ? "flex flex-wrap -mx-2" : "pl-6"}>
+        {content.map((item, index) => (
+          <li key={index} className={tab === 'skills' ? "px-2 w-full sm:w-1/2 md:w-1/3 mb-2" : "mb-2"}>
+            <span className="flex items-center">
+              <span className="mr-2 text-green-500">&#8226;</span>
+              {item}
+            </span>
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   return (
@@ -88,13 +82,15 @@ const AboutSection = () => {
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
               {TAB_DATA.map((tabItem) => (
-                <TabButton
-                  key={tabItem.id}
-                  selectTab={() => handleTabChange(tabItem.id)}
-                  active={tab === tabItem.id}
-                >
-                  {tabItem.title}
-                </TabButton>
+                TAB_DATA.find((t) => t.id === tabItem.id).content.length > 0 && (
+                  <TabButton
+                    key={tabItem.id}
+                    selectTab={() => handleTabChange(tabItem.id)}
+                    active={tab === tabItem.id}
+                  >
+                    {tabItem.title}
+                  </TabButton>
+                )
               ))}
             </div>
             <div className="mt-4">
