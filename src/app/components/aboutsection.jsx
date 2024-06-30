@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./tabbutton";
@@ -7,44 +7,24 @@ const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>MongoDB</li>
-        <li>SQL</li>
-        <li>Next.js</li>
-        <li>Reac</li>
-        <li>Angular</li>
-        <li>JavaScript</li>
-        <li>Typescript</li>
-        <li>C</li>
-        <li>C++</li>
-        <li>C#</li>
-        <li>Python</li>
-        <li>PHP</li>
-        <li>Java</li>
-      </ul>
-    ),
+    content: [
+      "Node.js", "Express", "PostgreSQL", "MongoDB", "SQL", "Next.js",
+      "React", "Angular", "JavaScript", "TypeScript", "C", "C++",
+      "C#", "Python", "PHP", "Java"
+    ]
   },
   {
     title: "Education",
     id: "education",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>B.A Philosophy & Information Science</li>
-        <li>University of Ghana</li>
-      </ul>
-    ),
+    content: [
+      "B.A Philosophy & Information Science",
+      "University of Ghana"
+    ]
   },
   {
     title: "Certifications",
     id: "certifications",
-    content: (
-      <ul className="list-disc pl-2">
-      </ul>
-    ),
+    content: []
   },
 ];
 
@@ -58,45 +38,68 @@ const AboutSection = () => {
     });
   };
 
+  const renderContent = (content) => {
+    if (tab === 'skills') {
+      return (
+        <ul className="flex flex-wrap -mx-2">
+          {content.map((item, index) => (
+            <li key={index} className="px-2 w-full sm:w-1/2 md:w-1/3 mb-2">
+              <span className="flex items-center">
+                <span className="mr-2 text-green-500">&#8226;</span>
+                {item}
+              </span>
+            </li>
+          ))}
+        </ul>
+      );
+    } else {
+      return (
+        <ul className="list-disc pl-6">
+          {content.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
   return (
     <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.jpg" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg">
-            I am a full stack web developer with a passion for creating
-            interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            MongoDB, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
-          </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {" "}
-              Skills{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              {" "}
-              Education{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
-            >
-              {" "}
-              Certifications{" "}
-            </TabButton>
+      <div className="container mx-auto px-4 py-8 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="w-full h-auto aspect-square relative">
+            <Image 
+              src="/images/about-image.jpg" 
+              layout="fill"
+              objectFit="cover"
+              alt="About me"
+              className="rounded-lg"
+            />
           </div>
-          <div className="mt-8">
-            {TAB_DATA.find((t) => t.id === tab).content}
+          <div className="flex flex-col h-full">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
+            <p className="text-base sm:text-lg mb-6">
+              I am a full stack web developer with a passion for creating
+              interactive and responsive web applications. I have experience
+              working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
+              MongoDB, HTML, CSS, and Git. I am a quick learner and I am always
+              looking to expand my knowledge and skill set. I am a team player and
+              I am excited to work with others to create amazing applications.
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {TAB_DATA.map((tabItem) => (
+                <TabButton
+                  key={tabItem.id}
+                  selectTab={() => handleTabChange(tabItem.id)}
+                  active={tab === tabItem.id}
+                >
+                  {tabItem.title}
+                </TabButton>
+              ))}
+            </div>
+            <div className="mt-4">
+              {renderContent(TAB_DATA.find((t) => t.id === tab).content)}
+            </div>
           </div>
         </div>
       </div>
