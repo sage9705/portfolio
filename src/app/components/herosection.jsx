@@ -8,44 +8,38 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <section className="lg:py-16">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+      <div className="flex flex-col sm:flex-row items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
+          className="flex-1 text-center sm:text-left"
         >
           <div>
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl lg:leading-normal font-extrabold">
-            <span className="text-transparent text-white bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Hello, I&apos;m{" Godwin "}
-            </span>
-            <br></br>
-            <TypeAnimation
-              sequence={[
-                "Web Developer",
-                1000,
-                "Software Engineer",
-                1000,
-                "Data Engineer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
+            <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl lg:leading-normal font-extrabold">
+              <span className="text-transparent text-white bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
+                Hello, I&apos;m{" Godwin "}
+              </span>
+              <br></br>
+              <TypeAnimation
+                sequence={[
+                  "Web Developer",
+                  1000,
+                  "Software Engineer",
+                  1000,
+                  "Data Engineer",
+                  1000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
+            </h1>
           </div>
           <div>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            I’m a software engineer with a passion for understanding how computers work. My journey began years ago, and since then, I’ve gained significant experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
-          </p>
-          {/* <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            At Trestle, during the data engineering training program, I honed my skills, working with tools like Apache Spark, Apache Airflow, and AWS services. I designed efficient data pipelines, solidifying my expertise in Big Data technologies and ETL processes.
-          </p>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            As a Frontend Engineer at INNGEN, I contribute to web development and occasionally dabble in content writing. Recently, I’ve been serving at 4TH-IR, further enriching my frontend development skills and fueling my passion for impactful software solutions.
-          </p> */}
+            <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+              I’m a software engineer with a passion for understanding how computers work. My journey began years ago, and since then, I’ve gained significant experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
+            </p>
           </div>
           <div>
             <Link
@@ -68,7 +62,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="col-span-4 place-self-center mt-4 lg:mt-0"
+          className="flex-1 flex justify-center mt-4 lg:mt-0"
         >
           <div className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
             <Image
