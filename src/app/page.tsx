@@ -6,12 +6,24 @@ import Footer from "./components/footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212] justify-between p-24 ">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <EmailSection />
-      {/* <Footer /> */}
-    </main>
+    <div className="bg-[#121212] min-h-screen text-white">
+      <header className="fixed w-full z-50 bg-[#121212]">
+        <Navbar />
+      </header>
+      <main className="flex flex-col items-center justify-center px-4 pt-20 pb-10 sm:px-8 md:px-16 lg:px-24 space-y-16 md:space-y-24">
+        <section className="w-full max-w-5xl">
+          <HeroSection />
+        </section>
+        <section className="w-full max-w-5xl bg-[#1E1E1E] p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+          <AboutSection />
+        </section>
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 bg-[#121212]">
+          <EmailSection />
+        </section>
+      </main>
+      <footer className="w-full bg-[#1E1E1E] p-4 sm:p-6 mt-16">
+        <Footer />
+      </footer>
+    </div>
   );
 }
