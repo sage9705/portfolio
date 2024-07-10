@@ -6,7 +6,7 @@ import Footer from "./components/footer";
 
 export default function Home() {
   return (
-    <div className="bg-[#121212] min-h-screen text-white">
+    <div className="bg-[#092537] min-h-screen text-white">
       <header className="fixed w-full z-50 bg-[#121212]">
         <Navbar />
       </header>
@@ -14,14 +14,14 @@ export default function Home() {
         <section className="w-full max-w-5xl">
           <HeroSection />
         </section>
-        <section className="w-full max-w-5xl bg-[#1E1E1E] p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
           <AboutSection />
         </section>
-        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 bg-[#121212]">
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12">
           <EmailSection />
         </section>
       </main>
-      <footer className="w-full bg-[#1E1E1E] p-4 sm:p-6 mt-16">
+      <footer className="w-full p-4 sm:p-6 mt-16">
         <Footer />
       </footer>
     </div>
