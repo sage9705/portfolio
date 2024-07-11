@@ -1,4 +1,4 @@
-'use client';   
+'use client';
 import React, { useState, useEffect } from 'react';
 
 const GradientCursor: React.FC = () => {
@@ -25,10 +25,11 @@ const GradientCursor: React.FC = () => {
         pointerEvents: 'none',
         zIndex: 9999,
         background: `
-  radial-gradient(800px at ${position.x}px ${position.y}px, rgba(29, 78, 216, 0.15), transparent 80%),
-  radial-gradient(600px at ${position.x}px ${position.y}px, rgba(255, 0, 0, 0.1), transparent 80%),
-  radial-gradient(400px at ${position.x}px ${position.y}px, rgba(0, 255, 0, 0.1), transparent 80%)
-`,
+          radial-gradient(800px at ${position.x}px ${position.y}px, rgba(76, 230, 222, 0.07), transparent 70%),
+          radial-gradient(600px at ${position.x}px ${position.y}px, rgba(9, 37, 55, 0.05), transparent 70%),
+          radial-gradient(400px at ${position.x}px ${position.y}px, rgba(0, 48, 73, 0.03), transparent 70%)
+        `,
+        mixBlendMode: 'screen',
       }}
     />
   );
