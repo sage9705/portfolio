@@ -56,14 +56,14 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col md:flex-row my-12 md:my-12 py-24 gap-4 relative"
+      className="flex flex-col md:flex-row my-12 md:my-12 py-24 gap-4 relative text-[#e0e0e0]"
     >
       <div className=""></div>
       <div className="z-10 flex-1">
-        <h5 className="text-xl font-bold text-white my-2">
+        <h5 className="text-xl font-bold my-2">
           Let&apos;s Connect
         </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
+        <p className="mb-4 max-w-md">
           I&apos;m currently looking for new opportunities, my inbox is always
           open. Whether you have a question or just want to say hi, I&apos;ll
           try my best to get back to you!
@@ -100,7 +100,7 @@ const EmailSection = () => {
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
+                className="block mb-2 text-sm font-medium"
               >
                 Your email
               </label>
@@ -109,14 +109,14 @@ const EmailSection = () => {
                 type="email"
                 id="email"
                 required
-                className="bg-[#4ce6de] border border-[#33353F] placeholder-[#0d0f0f] text-slate-700 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
                 placeholder="job@gmail.com"
               />
             </div>
             <div className="mb-6">
               <label
                 htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block text-sm mb-2 font-medium"
               >
                 Subject
               </label>
@@ -125,28 +125,28 @@ const EmailSection = () => {
                 type="text"
                 id="subject"
                 required
-                className="bg-[#4ce6de] border border-[#33353F] placeholder-[#0d0f0f] text-slate-700 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
                 placeholder="Hello there!"
               />
             </div>
             <div className="mb-6">
               <label
                 htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block text-sm mb-2 font-medium"
               >
                 Message
               </label>
               <textarea
                 name="message"
                 id="message"
-                className="bg-[#4ce6de] border border-[#33353F] placeholder-[#0d0f0f] text-slate-700 text-sm rounded-lg block w-full p-2.5"
+                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
                 placeholder="Message..."
               />
             </div>
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-secondary-500 hover:bg-secondary-950 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              className="bg-[#4ce6de] hover:bg-[#003049] text-[#121212] font-medium py-2.5 px-5 rounded-lg w-full"
             >
               {isLoading ? "Sending..." : "Send Message"}
             </button>

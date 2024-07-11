@@ -20,10 +20,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-gray-900 shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-10 shadow-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-        <span className="ml-2 text-xl font-bold text-white">
+        <span>
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo.jpg"

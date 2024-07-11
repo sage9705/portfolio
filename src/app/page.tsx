@@ -6,8 +6,8 @@ import Footer from "./components/footer";
 
 export default function Home() {
   return (
-    <div className="bg-[#092537] min-h-screen text-white">
-      <header className="fixed w-full z-50 bg-[#121212]">
+    <div className="bg-[#121212] min-h-screen text-white">
+      <header className="fixed w-full z-50 bg-[#092537]">
         <Navbar />
       </header>
       <main className="flex flex-col items-center justify-center px-4 pt-20 pb-10 sm:px-8 md:px-16 lg:px-24 space-y-16 md:space-y-24">

@@ -45,7 +45,7 @@ const AboutSection = () => {
     return (
       <ul className={tab === 'skills' ? "flex flex-wrap mx-2" : "pl-6"}>
         {content.map((item, index) => (
-          <li key={index} className={tab === 'skills' ? "px-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/6 mb-2" : "mb-2"}>
+          <li key={index} className={tab === 'skills' ? "px-2 w-full sm:w-1/2 text-[#003049] md:w-1/4 lg:w-1/6 mb-2" : "text-[#003049] mb-2"}>
             <span className="flex items-center">
               <span className="mr-2 text-green-500">&#8226;</span>
               {item}
@@ -57,7 +57,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white" id="about">
+    <section className="text-[#e0e0e0]" id="about">
       <div className="container mx-auto px-4 py-8 sm:py-16">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* <div className="w-full md:w-1/2 h-auto aspect-square relative">
