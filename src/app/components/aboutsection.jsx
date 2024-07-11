@@ -1,5 +1,6 @@
 'use client';
-import React, { useTransition, useState } from "react";
+import React, { useTransition, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import TabButton from "./tabbutton";
 
 const TAB_DATA = [
@@ -30,6 +31,26 @@ const TAB_DATA = [
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById("about");
+    if (element) observer.observe(element);
+
+    return () => {
+      if (element) observer.unobserve(element);
+    };
+  }, []);
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -43,57 +64,68 @@ const AboutSection = () => {
     }
 
     return (
-      <ul className={tab === 'skills' ? "flex flex-wrap mx-2" : "pl-6"}>
+      <motion.ul 
+        className={tab === 'skills' ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" : "space-y-2"}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {content.map((item, index) => (
-          <li key={index} className={tab === 'skills' ? "px-2 w-full sm:w-1/2 text-[#003049] md:w-1/4 lg:w-1/6 mb-2" : "text-[#003049] mb-2"}>
-            <span className="flex items-center">
-              <span className="mr-2 text-green-500">&#8226;</span>
-              {item}
-            </span>
-          </li>
+          <motion.li 
+            key={index} 
+            className={tab === 'skills' ? "bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] p-3 rounded-lg shadow-md" : "text-[#e0e0e0]"}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            {item}
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     );
   };
 
   return (
-    <section className="text-[#e0e0e0]" id="about">
-      <div className="container mx-auto px-4 py-8 sm:py-16">
-        <div className="flex flex-col md:flex-row gap-8 items-center">
-          {/* <div className="w-full md:w-1/2 h-auto aspect-square relative">
-            <Image 
-              src="/images/about-image.jpg" 
-              layout="fill"
-              objectFit="cover"
-              alt="About me"
-              className="rounded-lg"
-            />
-          </div> */}
-          <div className="flex flex-col">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-base sm:text-lg mb-6">
-              I'm self-taught software engineer, fullstack developer, data scientist, data analyst and a trained data engineer.
-              I have a strong passion for creating interactive and responsive web applications as well as developing systems and applications.
-              I am always looking to expand my knowledge and skill set.
-            </p>
+    <section className="text-[#e0e0e0] py-20 bg-gradient-to-b from-[#121212] to-[#1f1f1f]" id="about">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#4ce6de] to-[#00ffc3]">About Me</h2>
+          <p className="text-lg sm:text-xl mb-12 text-center leading-relaxed">
+            I'm a self-taught software engineer, fullstack developer, data scientist, data analyst, and trained data engineer.
+            With a strong passion for creating interactive and responsive web applications, as well as developing robust systems,
+            I'm always excited to tackle new challenges and expand my skill set in this ever-evolving field of technology.
+          </p>
+          <div className="flex justify-center mb-8">
+            {TAB_DATA.map((tabItem) => (
+              TAB_DATA.find((t) => t.id === tabItem.id).content.length > 0 && (
+                <TabButton
+                  key={tabItem.id}
+                  selectTab={() => handleTabChange(tabItem.id)}
+                  active={tab === tabItem.id}
+                >
+                  {tabItem.title}
+                </TabButton>
+              )
+            ))}
           </div>
-        </div>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {TAB_DATA.map((tabItem) => (
-            TAB_DATA.find((t) => t.id === tabItem.id).content.length > 0 && (
-              <TabButton
-                key={tabItem.id}
-                selectTab={() => handleTabChange(tabItem.id)}
-                active={tab === tabItem.id}
-              >
-                {tabItem.title}
-              </TabButton>
-            )
-          ))}
-        </div>
-        <div className="mt-4">
-          {renderContent(TAB_DATA.find((t) => t.id === tab).content)}
-        </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={tab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="bg-[#1a1a1a] p-6 rounded-lg shadow-xl"
+            >
+              {renderContent(TAB_DATA.find((t) => t.id === tab).content)}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
