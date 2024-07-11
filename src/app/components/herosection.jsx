@@ -24,6 +24,12 @@ const HeroSection = () => {
     });
   }, [mousePosition, imageControls]);
 
+  const ButtonLink = ({ href, className, children }) => (
+    <Link href={href} className={className}>
+        {children}
+    </Link>
+  );
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#121212] to-[#1f1f1f]">
       <div className="mx-auto px-4">
@@ -61,25 +67,21 @@ const HeroSection = () => {
               From the inner workings of computers to the cutting edge of technology, I'm a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I've gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="#contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 rounded-full bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#0e0e0e] font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffc3]/50"
-                >
-                  Hire Me
-                </motion.button>
-              </Link>
-              <Link href="/">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 rounded-full bg-[#121212] text-white font-bold text-lg border-2 border-[#4ce6de] transition-all duration-300 hover:bg-[#4ce6de] hover:text-[#0e0e0e]"
-                >
-                  Download CV
-                </motion.button>
-              </Link>
-            </div>
+      <ButtonLink
+        href="#contact"
+        className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#4ce6de] via-[#00ffc3] to-[#4ce6de] text-[#0e0e0e] font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffc3]/50 transform hover:scale-105 active:scale-95 bg-size-200 bg-pos-0 hover:bg-pos-100"
+      >
+        Hire Me
+      </ButtonLink>
+      <ButtonLink
+        href="/path-to-your-cv.pdf"
+        className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text font-bold text-lg border-2 border-[#4ce6de] transition-all duration-300 hover:shadow-lg hover:shadow-[#4ce6de]/30 transform hover:scale-105 active:scale-95 bg-size-200 bg-pos-0 hover:bg-pos-100"
+      >
+        <span className="bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-300">
+          Download CV
+        </span>
+      </ButtonLink>
+    </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
