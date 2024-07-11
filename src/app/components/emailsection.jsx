@@ -1,5 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import GithubIcon from "../../../public/images/github.svg";
 import LinkedinIcon from "../../../public/images/linkedin.svg";
 import Link from "next/link";
@@ -9,6 +11,14 @@ const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +51,7 @@ const EmailSection = () => {
         e.target.reset();
         setTimeout(() => {
           setEmailSubmitted(false);
-        }, 3000); 
+        }, 5000);
       } else {
         setError("Failed to send message. Please try again.");
       }
@@ -53,108 +63,136 @@ const EmailSection = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <section
+    <motion.section
       id="contact"
-      className="flex flex-col md:flex-row my-12 md:my-12 py-24 gap-4 relative text-[#e0e0e0]"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#121212] to-[#1f1f1f] text-[#e0e0e0]"
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
     >
-      <div className=""></div>
-      <div className="z-10 flex-1">
-        <h5 className="text-xl font-bold my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="mb-4 max-w-md">
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
-        <div className="socials flex flex-row gap-2">
-          <Link
-            href="https://github.com/sage9705"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={GithubIcon} alt="Github Icon" height={30} width={30} />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/edem-kumahor-1995aa141"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={LinkedinIcon}
-              alt="Linkedin Icon"
-              height={30}
-              width={30}
-            />
-          </Link>
-        </div>
+      <div className="max-w-7xl mx-auto">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12" variants={containerVariants}>
+          <motion.div variants={childVariants}>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] bg-clip-text text-transparent">
+              Let's Connect
+            </h2>
+            <p className="mb-6 text-lg">
+              I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <div className="flex space-x-4 mb-8">
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link href="https://github.com/sage9705" target="_blank" rel="noopener noreferrer">
+                  <Image src={GithubIcon} alt="Github Icon" height={40} width={40} className="hover:opacity-80 transition-opacity" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link href="https://www.linkedin.com/in/edem-kumahor-1995aa141" target="_blank" rel="noopener noreferrer">
+                  <Image src={LinkedinIcon} alt="Linkedin Icon" height={40} width={40} className="hover:opacity-80 transition-opacity" />
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+          <motion.div variants={childVariants}>
+            {emailSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-green-500 text-white p-6 rounded-lg shadow-lg"
+              >
+                <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
+                <p>Your message has been sent successfully. I'll get back to you soon!</p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <motion.div variants={childVariants}>
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    Your email
+                  </label>
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    placeholder="job@example.com"
+                  />
+                </motion.div>
+                <motion.div variants={childVariants}>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                    Subject
+                  </label>
+                  <input
+                    name="subject"
+                    type="text"
+                    id="subject"
+                    required
+                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    placeholder="Hello there!"
+                  />
+                </motion.div>
+                <motion.div variants={childVariants}>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    required
+                    rows={4}
+                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    placeholder="Your message here..."
+                  />
+                </motion.div>
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-3 px-4 bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {isLoading ? "Sending..." : "Send Message"}
+                </motion.button>
+              </form>
+            )}
+            {error && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-red-500 mt-4"
+              >
+                {error}
+              </motion.p>
+            )}
+          </motion.div>
+        </motion.div>
       </div>
-      <div className="z-10 flex-1">
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
-                placeholder="job@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
-                placeholder="Hello there!"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#092537] border border-[#33353F] placeholder-[#e0e0e0] text-[#e0e0e0] text-sm rounded-lg block w-full p-2.5"
-                placeholder="Message..."
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="bg-[#4ce6de] hover:bg-[#003049] text-[#121212] font-medium py-2.5 px-5 rounded-lg w-full"
-            >
-              {isLoading ? "Sending..." : "Send Message"}
-            </button>
-          </form>
-        )}
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      </div>
-    </section>
+    </motion.section>
   );
 };
 
