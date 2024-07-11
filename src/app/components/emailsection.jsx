@@ -126,7 +126,7 @@ const EmailSection = () => {
                 className="bg-green-500 text-white p-6 rounded-lg shadow-lg"
               >
                 <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
-                <p>Your message has been sent successfully. I'll get back to you soon!</p>
+                <p>Your message has been sent successfully. I&apos;ll get back to you soon!</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
