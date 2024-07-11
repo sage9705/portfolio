@@ -24,7 +24,11 @@ const GradientCursor: React.FC = () => {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 9999,
-        background: `radial-gradient(600px at ${position.x}px ${position.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
+        background: `
+  radial-gradient(800px at ${position.x}px ${position.y}px, rgba(29, 78, 216, 0.15), transparent 80%),
+  radial-gradient(600px at ${position.x}px ${position.y}px, rgba(255, 0, 0, 0.1), transparent 80%),
+  radial-gradient(400px at ${position.x}px ${position.y}px, rgba(0, 255, 0, 0.1), transparent 80%)
+`,
       }}
     />
   );
