@@ -87,8 +87,8 @@ const EmailSection = () => {
   };
 
   return (
+    <section id="contact">
     <motion.section
-      id="contact"
       className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#121212] to-[#1f1f1f] text-[#e0e0e0]"
       ref={ref}
       variants={containerVariants}
@@ -193,6 +193,7 @@ const EmailSection = () => {
         </motion.div>
       </div>
     </motion.section>
+    </section>
   );
 };
 

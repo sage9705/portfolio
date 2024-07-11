@@ -4,7 +4,6 @@ import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion, useAnimation } from "framer-motion";
 
-
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const imageControls = useAnimation();

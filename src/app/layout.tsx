@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Lato, Roboto, Open_Sans } from "next/font/google";
 import "./globals.css";
+import dynamic from 'next/dynamic';
+
+const GradientCursor = dynamic(() => import('./components/gradientcursor'), {
+  ssr: false
+});
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
@@ -20,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
+        <GradientCursor />
         {children}
       </body>
     </html>
