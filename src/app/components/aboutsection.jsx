@@ -65,7 +65,7 @@ const AboutSection = () => {
 
     return (
       <motion.ul 
-        className={tab === 'skills' ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" : "space-y-2"}
+        className={tab === 'skills' ? "flex flex-wrap gap-4 justify-center" : "space-y-2"}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -73,7 +73,7 @@ const AboutSection = () => {
         {content.map((item, index) => (
           <motion.li 
             key={index} 
-            className={tab === 'skills' ? "bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] p-3 rounded-lg shadow-md" : "text-[#e0e0e0]"}
+            className={tab === 'skills' ? "bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] min-w-[120px] and max-w-[200px] p-3" : "text-[#e0e0e0]"}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
