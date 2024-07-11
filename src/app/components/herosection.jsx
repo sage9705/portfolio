@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion, useAnimation } from "framer-motion";
-import Link from "next/link";
+
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -24,15 +24,9 @@ const HeroSection = () => {
     });
   }, [mousePosition, imageControls]);
 
-  const ButtonLink = ({ href, className, children }) => (
-    <Link href={href} className={className}>
-        {children}
-    </Link>
-  );
-
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#121212] to-[#1f1f1f]">
-      <div className="mx-auto px-4">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#121212] to-[#1f1f1f] py-16">
+      <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -42,7 +36,7 @@ const HeroSection = () => {
           >
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ffc3] to-[#4ce6de]">
-                Hello, I'm Godwin
+                Hello, I&apos;m Godwin
               </span>
             </h1>
             <div className="h-16 mb-6">
@@ -66,22 +60,6 @@ const HeroSection = () => {
             <p className="text-[#e0e0e0] text-lg mb-8 max-w-2xl">
               From the inner workings of computers to the cutting edge of technology, I'm a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I've gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-      <ButtonLink
-        href="#contact"
-        className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#4ce6de] via-[#00ffc3] to-[#4ce6de] text-[#0e0e0e] font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffc3]/50 transform hover:scale-105 active:scale-95 bg-size-200 bg-pos-0 hover:bg-pos-100"
-      >
-        Hire Me
-      </ButtonLink>
-      <ButtonLink
-        href="/path-to-your-cv.pdf"
-        className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text font-bold text-lg border-2 border-[#4ce6de] transition-all duration-300 hover:shadow-lg hover:shadow-[#4ce6de]/30 transform hover:scale-105 active:scale-95 bg-size-200 bg-pos-0 hover:bg-pos-100"
-      >
-        <span className="bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-300">
-          Download CV
-        </span>
-      </ButtonLink>
-    </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -91,11 +69,11 @@ const HeroSection = () => {
           >
             <motion.div
               animate={imageControls}
-              className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] relative"
+              className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative"
             >
               <Image
                 src="/images/hero_image.png"
-                alt="Godwin"
+                alt="hero image"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-full"
