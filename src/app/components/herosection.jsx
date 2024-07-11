@@ -57,7 +57,7 @@ const HeroSection = () => {
               />
             </div>
             <p className="text-[#e0e0e0] text-lg mb-8 max-w-2xl">
-              From the inner workings of computers to the cutting edge of technology, I'm a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I've gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
+              From the inner workings of computers to the cutting edge of technology, I&apos;m a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I&apos;ve gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
             </p>
           </motion.div>
           <motion.div

@@ -99,10 +99,10 @@ const EmailSection = () => {
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12" variants={containerVariants}>
           <motion.div variants={childVariants}>
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] bg-clip-text text-transparent">
-              Let's Connect
+              Let&apos;s Connect
             </h2>
             <p className="mb-6 text-lg">
-              I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
             <div className="flex space-x-4 mb-8">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
