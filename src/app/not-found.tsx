@@ -28,7 +28,6 @@ const Custom404 = () => {
       >
         <Link href="/" className="px-8 py-3 rounded-full bg-gradient-to-r from-[#4ce6de] via-[#00ffc3] to-[#4ce6de] text-[#0e0e0e] font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffc3]/50 transform hover:scale-105">
             Go Back Home
-  
         </Link>
       </motion.div>
     </div>

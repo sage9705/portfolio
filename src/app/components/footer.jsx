@@ -1,10 +1,7 @@
 'use client';
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import GithubIcon from "../../../public/images/github.png";
-import LinkedinIcon from "../../../public/images/linkedin.png";
+
 
 const Footer = () => {
   return (
@@ -26,26 +23,6 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex space-x-4"
           >
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <Link
-                href="https://github.com/sage9705"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#4ce6de] transition-colors duration-300"
-              >
-                <Image src={GithubIcon} alt="Github Icon" width={24} height={24} />
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <Link
-                href="https://www.linkedin.com/in/edem-kumahor-1995aa141"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#4ce6de] transition-colors duration-300"
-              >
-                <Image src={LinkedinIcon} alt="Linkedin Icon" width={24} height={24} />
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
         <motion.div
