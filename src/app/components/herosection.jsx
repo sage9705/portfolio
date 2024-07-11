@@ -16,7 +16,7 @@ const HeroSection = () => {
           className="flex-1 text-center sm:text-left"
         >
           <div>
-            <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl lg:leading-normal font-extrabold">
+            <h1 className="text-white mb-4 text-[24px] sm:text-3xl lg:text-3xl lg:leading-normal font-extrabold">
               <span className="text-[#00ffc3;]">
               Hello, I&apos;m{" Godwin "}
               </span>

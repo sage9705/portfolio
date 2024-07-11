@@ -72,11 +72,9 @@ const AboutSection = () => {
           <div className="flex flex-col">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
             <p className="text-base sm:text-lg mb-6">
-              I am a full stack web developer with a passion for creating
-              interactive and responsive web applications. I have experience
-              working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-              MongoDB, HTML, CSS, and Git. I am a quick learner and I am always
-              looking to expand my knowledge and skill set.
+              I'm self-taught software engineer, fullstack developer, data scientist, data analyst and a trained data engineer.
+              I have a strong passion for creating interactive and responsive web applications as well as developing systems and applications.
+              I am always looking to expand my knowledge and skill set.
             </p>
           </div>
         </div>
