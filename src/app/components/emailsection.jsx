@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import GithubIcon from "../../../public/images/github.svg";
-import LinkedinIcon from "../../../public/images/linkedin.svg";
+import GithubIcon from "../../../public/images/github.png";
+import LinkedinIcon from "../../../public/images/linkedin.png";
 import Link from "next/link";
 import Image from "next/image";
 

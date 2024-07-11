@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import GithubIcon from "../../../public/images/github.svg";
-import LinkedinIcon from "../../../public/images/linkedin.svg";
+import GithubIcon from "../../../public/images/github.png";
+import LinkedinIcon from "../../../public/images/linkedin.png";
 
 const Footer = () => {
   return (
