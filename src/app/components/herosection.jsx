@@ -35,7 +35,7 @@ const HeroSection = () => {
           >
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ffc3] to-[#4ce6de]">
-                Hello, I&apos;m Godwin
+                Hello, I&apos;m Godwin. 
               </span>
             </h1>
             <div className="h-16 mb-6">
