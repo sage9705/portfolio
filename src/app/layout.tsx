@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
-const firaCode = Fira_Code({ subsets: ["latin"], weight: ["300", "500"] });
+const firaCode = Fira_Code({ subsets: ["latin"], weight: ["300", "700"] });
 
 export const metadata: Metadata = {
   title: "Godwin",
