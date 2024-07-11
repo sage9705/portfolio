@@ -83,7 +83,7 @@ const EmailSection = () => {
       transition: {
         duration: 0.5,
       },
-    },
+    },  
   };
 
   return (

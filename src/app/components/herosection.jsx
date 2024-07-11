@@ -26,7 +26,7 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#121212] to-[#1f1f1f]">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -61,7 +61,7 @@ const HeroSection = () => {
               From the inner workings of computers to the cutting edge of technology, I'm a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I've gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="/#contact">
+              <Link href="#contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
