@@ -24,8 +24,8 @@ const HeroSection = () => {
   }, [mousePosition, imageControls]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#121212] to-[#1f1f1f] py-16">
-      <div className="container mx-auto px-4">
+    <section className="flex items-center justify-center relative overflow-hidden py-16">
+      <div className="mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -57,7 +57,7 @@ const HeroSection = () => {
               />
             </div>
             <p className="text-[#e0e0e0] text-lg mb-8 max-w-2xl">
-              From the inner workings of computers to the cutting edge of technology, I&apos;m a software engineer fueled by a passion to understand it all! My journey began years ago, and along the way, I&apos;ve gained valuable experience at Trestle Academy Ghana, INNGEN, and 4th-IR.
+            I engineer robust software solutions and uncover insights through data science to create impactful digital experiences.
             </p>
           </motion.div>
           <motion.div
@@ -68,21 +68,20 @@ const HeroSection = () => {
           >
             <motion.div
               animate={imageControls}
-              className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative"
+              className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative mt-5"
             >
               <Image
                 src="/images/hero_image.png"
                 alt="hero image"
                 layout="fill"
                 objectFit="cover"
-                className="rounded-full"
+                className="rounded-full mb-[60px]"
               />
             </motion.div>
             <div className="absolute inset-0 bg-gradient-to-r from-[#00ffc3] to-[#4ce6de] opacity-20 rounded-full filter blur-3xl"></div>
           </motion.div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-20 bg-repeat"></div>
     </section>
   );
 };
