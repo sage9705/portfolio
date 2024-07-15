@@ -3,7 +3,20 @@ import { motion } from "framer-motion";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
+const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, status }) => {
+  const getStatusColor = () => {
+    switch (status) {
+      case "completed":
+        return "text-green-500";
+      case "ongoing":
+        return "text-yellow-500";
+      case "halted":
+        return "text-red-500";
+      default:
+        return "text-gray-400";
+    }
+  };
+
   return (
     <motion.div
       className="bg-gray-900 rounded-xl overflow-hidden shadow-lg h-full flex flex-col"
@@ -30,7 +43,8 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
       </div>
       <div className="p-4 flex flex-col flex-grow">
         <h5 className="text-2xl font-bold mb-2 text-white">
-          {title}
+          {title}{" "}
+          <span className={`text-sm font-semibold ${getStatusColor()}`}>{status}</span>
         </h5>
         <p className="text-gray-300 mb-4 flex-grow">{description}</p>
         <div className="flex justify-end space-x-4">
