@@ -11,8 +11,8 @@ const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/path-to-your-cv.pdf';
-    link.download = 'Your_Name_CV.pdf';
+    link.href = '';
+    link.download = '';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -53,7 +53,7 @@ const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 </div>
               )}
               <iframe
-                src="/path-to-your-cv.pdf"
+                src=""
                 className="w-full h-[70vh]"
                 onLoad={() => setIsLoading(false)}
                 style={{ display: isLoading ? 'none' : 'block' }}
