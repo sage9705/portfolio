@@ -17,11 +17,11 @@ export default function Home() {
           <HeroSection />
           <CTA />
         </section>
-        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg">
           <AboutSection />
         </section>
-        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
-          {/* <ProjectsSection /> */}
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg">
+          <ProjectsSection />
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12">
           <EmailSection />

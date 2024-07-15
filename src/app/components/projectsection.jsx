@@ -109,8 +109,8 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative overflow-hidden py-20 bg-gray-900">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900 opacity-30" />
+    <section id="projects" className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 bg-gradient-to-br" />
       <motion.div
         ref={ref}
         initial="hidden"
@@ -118,7 +118,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
