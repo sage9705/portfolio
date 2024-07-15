@@ -13,7 +13,7 @@ const CTA = () => {
           href="/#contact"
           className="px-8 py-3 text-center rounded-full bg-gradient-to-r from-[#4ce6de] via-[#00ffc3] to-[#4ce6de] text-[#0e0e0e] font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffc3]/50 transform hover:scale-105"
         >
-          Hire Me
+          Connect
         </Link>
         <button
           onClick={() => setIsModalOpen(true)}

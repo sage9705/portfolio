@@ -97,7 +97,11 @@ const AboutSection = () => {
           <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#4ce6de] to-[#00ffc3]">About Me</h2>
           <p className="text-lg sm:text-xl mb-12 text-center leading-relaxed">
           I&apos;m a self-taught tech generalist with expertise in software engineering, full-stack development, data science, data analysis and engineering.
-            I have a penchant for technology, with a strong passion for creating interactive and responsive web applications, as well as developing robust systems. I enjoy exploring innovative tech through tinkering.
+          </p>
+          <p className="text-lg sm:text-xl mb-12 text-center leading-relaxed">
+            I have a keen affinity for technology, driven by a strong passion for crafting interactive and responsive web applications and developing robust systems. I enjoy exploring innovative tech through tinkering.
+          </p>
+          <p className="text-lg sm:text-xl mb-12 text-center leading-relaxed">
             I&apos;m always excited to tackle new challenges and expand my skill set in this ever-evolving field of technology.
           </p>
           <div className="flex justify-center mb-8">
