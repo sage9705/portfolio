@@ -1,6 +1,7 @@
 import HeroSection from "./components/herosection";
 import Navbar from "./components/navbar";
 import AboutSection from "./components/aboutsection";
+import ProjectsSection from "./components/projectsection"
 import EmailSection from "./components/emailsection";
 import Footer from "./components/footer";
 import CTA from "./components/cta";
@@ -18,6 +19,9 @@ export default function Home() {
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
           <AboutSection />
+        </section>
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+          {/* <ProjectsSection /> */}
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12">
           <EmailSection />
