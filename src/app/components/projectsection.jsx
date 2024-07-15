@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./projectcard";
 import ProjectTag from "./projecttag";
-import { motion, useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const projectsData = [
   {
@@ -65,6 +65,13 @@ const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -79,48 +86,76 @@ const ProjectsSection = () => {
     animate: { y: 0, opacity: 1 },
   };
 
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const tagVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
-      </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Desktop"
-          isSelected={tag === "Desktop"}
-        />
-      </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
-          >
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
-            />
-          </motion.li>
-        ))}
-      </ul>
+    <section id="projects" className="relative overflow-hidden py-20 bg-gray-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900 opacity-30" />
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={sectionVariants}
+        className="container mx-auto px-4 relative z-10"
+      >
+        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+          My Projects
+        </h2>
+        <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
+          {["All", "Web", "Desktop"].map((tagName) => (
+            <motion.div key={tagName} variants={tagVariants}>
+              <ProjectTag
+                onClick={handleTagChange}
+                name={tagName}
+                isSelected={tag === tagName}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.ul
+          className="grid md:grid-cols-3 gap-8 md:gap-12"
+          variants={sectionVariants}
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.li
+              key={index}
+              variants={cardVariants}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3 },
+              }}
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imgUrl={project.image}
+                gitUrl={project.gitUrl}
+                previewUrl={project.previewUrl}
+              />
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
     </section>
   );
 };
