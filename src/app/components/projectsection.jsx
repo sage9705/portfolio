@@ -7,6 +7,7 @@ import projectsData from "../data/projectsData";
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
+  const [status, setStatus] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const controls = useAnimation();
@@ -21,9 +22,15 @@ const ProjectsSection = () => {
     setTag(newTag);
   };
 
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
-  );
+  const handleStatusChange = (newStatus) => {
+    setStatus(newStatus);
+  };
+
+  const filteredProjects = projectsData.filter((project) => {
+    const tagMatch = project.tag.includes(tag) || tag === "All";
+    const statusMatch = project.status === status || status === "All";
+    return tagMatch && statusMatch;
+  });
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -76,6 +83,23 @@ const ProjectsSection = () => {
             </motion.div>
           ))}
         </motion.div>
+        <motion.div className="flex justify-center gap-4 mb-8">
+          {["All", "Completed", "Ongoing", "Halted"].map((statusName) => (
+            <motion.button
+              key={statusName}
+              onClick={() => handleStatusChange(statusName)}
+              className={`text-sm py-2 px-4 rounded-lg ${
+                status === statusName
+                  ? "bg-purple-500 text-white"
+                  : "bg-gray-800 text-gray-300 hover:bg-purple-500 hover:text-white"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {statusName}
+            </motion.button>
+          ))}
+        </motion.div>
         <motion.ul
           className="grid md:grid-cols-3 gap-8 md:gap-12"
           variants={sectionVariants}
@@ -95,6 +119,7 @@ const ProjectsSection = () => {
                 imgUrl={project.image}
                 gitUrl={project.gitUrl}
                 previewUrl={project.previewUrl}
+                status={project.status} 
               />
             </motion.li>
           ))}
