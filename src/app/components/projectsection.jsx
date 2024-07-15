@@ -62,7 +62,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#4ce6de] to-[#00ffc3]">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
