@@ -3,11 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "../components/projectcard";
 import ProjectTag from "../components/projecttag";
 import { motion, useAnimation, useInView } from "framer-motion";
-import projectsData from "../data/projectsData";
+import projectsData from "../data/projectsData"; 
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
-  const [status, setStatus] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const controls = useAnimation();
@@ -22,15 +21,9 @@ const ProjectsSection = () => {
     setTag(newTag);
   };
 
-  const handleStatusChange = (newStatus) => {
-    setStatus(newStatus);
-  };
-
-  const filteredProjects = projectsData.filter((project) => {
-    const tagMatch = project.tag.includes(tag) || tag === "All";
-    const statusMatch = project.status === status || status === "All";
-    return tagMatch && statusMatch;
-  });
+  const filteredProjects = projectsData.filter((project) =>
+    project.tag.includes(tag)
+  );
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -69,7 +62,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent bg-gradient-to-r from-[#4ce6de] to-[#00ffc3]">
+        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
@@ -81,25 +74,6 @@ const ProjectsSection = () => {
                 isSelected={tag === tagName}
               />
             </motion.div>
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-wrap justify-center gap-4 mb-8">
-          {["All", "Completed", "Ongoing", "Halted"].map((statusName) => (
-            <motion.button
-              key={statusName}
-              onClick={() => handleStatusChange(statusName)}
-              className={`px-6 py-2 text-center rounded-full font-bold text-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105 ${
-                status === statusName
-                  ? "bg-gradient-to-r from-[#4ce6de] via-[#00ffc3] to-[#4ce6de] text-[#0e0e0e] hover:shadow-[#00ffc3]/50"
-                  : "bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text border-2 border-[#4ce6de] hover:shadow-[#4ce6de]/30"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className={status === statusName ? "" : "bg-gradient-to-r from-[#121212] via-[#4ce6de] to-[#121212] text-transparent bg-clip-text bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-300"}>
-                {statusName}
-              </span>
-            </motion.button>
           ))}
         </motion.div>
         <motion.ul
@@ -121,7 +95,6 @@ const ProjectsSection = () => {
                 imgUrl={project.image}
                 gitUrl={project.gitUrl}
                 previewUrl={project.previewUrl}
-                status={project.status} 
               />
             </motion.li>
           ))}
