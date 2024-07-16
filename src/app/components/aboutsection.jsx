@@ -10,7 +10,7 @@ const TAB_DATA = [
     content: [
       "Node.js", "Express", "PostgreSQL", "MongoDB", "SQL", "Next.js",
       "React", "Angular", "JavaScript", "TypeScript", "C", "C++",
-      "C#", "Python", "PHP", "Java"
+      "C#", "Python", "PHP", "Java", "Numpy", "Pandas", "Scikit-learn", "Airflow", "Kafka"
     ]
   },
   {
