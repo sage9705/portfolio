@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "../components/projectcard";
 import ProjectTag from "../components/projecttag";
 import { motion, useAnimation, useInView } from "framer-motion";
-import projectsData from "../data/projectsData"; 
+import projectsData from "../data/projectsData";
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -53,8 +53,8 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative overflow-hidden py-20">
-      <div className="absolute inset-0 bg-gradient-to-br" />
+    <section id="projects" className="relative py-20">
+      <div className="absolute inset-0" />
       <motion.div
         ref={ref}
         initial="hidden"
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#4ce6de] to-[#00ffc3]">
+        <h2 className="text-5xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-400">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
@@ -77,7 +77,7 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
         <motion.ul
-          className="grid md:grid-cols-3 gap-8 md:gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={sectionVariants}
         >
           {filteredProjects.map((project, index) => (
@@ -85,7 +85,7 @@ const ProjectsSection = () => {
               key={index}
               variants={cardVariants}
               whileHover={{
-                scale: 1.05,
+                scale: 1.03,
                 transition: { duration: 0.3 },
               }}
             >
@@ -95,6 +95,7 @@ const ProjectsSection = () => {
                 imgUrl={project.image}
                 gitUrl={project.gitUrl}
                 previewUrl={project.previewUrl}
+                technologies={project.technologies}
               />
             </motion.li>
           ))}
