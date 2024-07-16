@@ -20,7 +20,7 @@ const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 const firaCode = Fira_Code({ subsets: ["latin"], weight: ["300", "700"] });
 
 export const metadata: Metadata = {
-  title: "Godwin",
+  title: "Godwin Kumahor",
   description: "Godwin Kumahor's portfolio",
 };
 
