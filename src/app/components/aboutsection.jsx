@@ -73,7 +73,7 @@ const AboutSection = () => {
         {content.map((item, index) => (
           <motion.li 
             key={index} 
-            className={tab === 'skills' ? "bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] min-w-[120px] and max-w-[200px] p-3" : "text-[#e0e0e0]"}
+            className={tab === 'skills' ? "bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] min-w-[120px] and max-w-[200px] p-3" : "text-[#4ce6de]"}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -86,7 +86,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-[#e0e0e0] py-20 bg-gradient-to-b from-[#121212] to-[#1f1f1f]" id="about">
+    <section className="text-[#e0e0e0] py-20 bg-gradient-to-b from-[#121212] to-[#1f1f1f] mb-[-100px]" id="about">
       <div className="container mx-auto px-4">
         <motion.div 
           className="max-w-4xl mx-auto"
@@ -124,7 +124,7 @@ const AboutSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-[#1a1a1a] p-6 rounded-lg shadow-xl"
+              className="p-6"
             >
               {renderContent(TAB_DATA.find((t) => t.id === tab).content)}
             </motion.div>

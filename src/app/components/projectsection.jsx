@@ -1,65 +1,9 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import ProjectCard from "./projectcard";
-import ProjectTag from "./projecttag";
+import ProjectCard from "../components/projectcard";
+import ProjectTag from "../components/projecttag";
 import { motion, useAnimation, useInView } from "framer-motion";
-
-const projectsData = [
-  {
-    id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 description",
-    image: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 2,
-    title: "Potography Portfolio Website",
-    description: "Project 2 description",
-    image: "/images/projects/2.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
-    image: "/images/projects/3.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
-    title: "Food Ordering Application",
-    description: "Project 4 description",
-    image: "/images/projects/4.png",
-    tag: ["All", "Desktop"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-];
+import projectsData from "../data/projectsData";
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -109,8 +53,8 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative overflow-hidden py-20 bg-gray-900">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-purple-900 opacity-30" />
+    <section id="projects" className="relative py-20">
+      <div className="absolute inset-0" />
       <motion.div
         ref={ref}
         initial="hidden"
@@ -118,7 +62,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-center text-5xl font-extrabold text-white mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+        <h2 className="text-5xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-400">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">
@@ -133,7 +77,7 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
         <motion.ul
-          className="grid md:grid-cols-3 gap-8 md:gap-12"
+          className="space-y-8"
           variants={sectionVariants}
         >
           {filteredProjects.map((project, index) => (
@@ -141,7 +85,7 @@ const ProjectsSection = () => {
               key={index}
               variants={cardVariants}
               whileHover={{
-                scale: 1.05,
+                scale: 1.03,
                 transition: { duration: 0.3 },
               }}
             >
@@ -151,6 +95,7 @@ const ProjectsSection = () => {
                 imgUrl={project.image}
                 gitUrl={project.gitUrl}
                 previewUrl={project.previewUrl}
+                technologies={project.technologies}
               />
             </motion.li>
           ))}

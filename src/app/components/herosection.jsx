@@ -24,7 +24,7 @@ const HeroSection = () => {
   }, [mousePosition, imageControls]);
 
   return (
-    <section className="flex items-center justify-center relative overflow-hidden py-16">
+    <section className="flex items-center justify-center relative py-16">
       <div className="mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <motion.div

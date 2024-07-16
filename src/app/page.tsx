@@ -8,19 +8,19 @@ import CTA from "./components/cta";
 
 export default function Home() {
   return (
-    <div className="bg-[#121212] min-h-screen text-white">
+    <div className="bg-[#121212] min-h-screen">
       <header className="fixed w-full z-50 bg-[#092537]">
         <Navbar />
       </header>
       <main className="flex flex-col items-center justify-center px-4 pt-20 pb-10 sm:px-8 md:px-16 lg:px-24 space-y-16 md:space-y-24">
-        <section className="w-full max-w-5xl">
+        <section className="w-full max-w-6xl">
           <HeroSection />
           <CTA />
         </section>
-        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg">
           <AboutSection />
         </section>
-        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+        <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg">
           {/* <ProjectsSection /> */}
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12">
