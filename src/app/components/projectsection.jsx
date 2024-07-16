@@ -77,7 +77,7 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
         <motion.ul
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="space-y-8"
           variants={sectionVariants}
         >
           {filteredProjects.map((project, index) => (
