@@ -102,7 +102,7 @@ const EmailSection = () => {
               Let&apos;s Connect
             </h2>
             <p className="mb-6 text-lg">
-              I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+              Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
             </p>
             <div className="flex space-x-4 mb-8">
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
