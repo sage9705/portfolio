@@ -21,7 +21,7 @@ export default function Home() {
           <AboutSection />
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12 rounded-lg">
-          {/* <ProjectsSection /> */}
+          <ProjectsSection />
         </section>
         <section className="w-full max-w-5xl p-6 sm:p-8 md:p-12">
           <EmailSection />
