@@ -11,8 +11,8 @@ const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '';
-    link.download = '';
+    link.href = '/cv/Edem_Kumahor_CV.pdf';
+    link.download = 'Edem_Godwin_Kumahor_CV';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -53,7 +53,7 @@ const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 </div>
               )}
               <iframe
-                src=""
+                src="/cv/Edem_Kumahor_CV.pdf"
                 className="w-full h-[70vh]"
                 onLoad={() => setIsLoading(false)}
                 style={{ display: isLoading ? 'none' : 'block' }}

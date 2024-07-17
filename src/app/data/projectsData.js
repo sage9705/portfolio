@@ -18,6 +18,16 @@ const projectsData = [
     gitUrl: "/",
     previewUrl: "/",
     technologies: ["Next.js", "React", "Framer", "Redux", "React animation"],
+  },
+  {
+    id: 3,
+    title: "Movelen",
+    description: "An application I built to help",
+    image: "/images/projects/1.png",
+    tag: ["All", "Desktop"],
+    gitUrl: "/",
+    previewUrl: "/",
+    technologies: ["Next.js", "React", "Framer", "Redux", "React animation"],
   }
 ]
 export default projectsData;
