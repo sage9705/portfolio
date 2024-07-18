@@ -6,7 +6,7 @@ import Link from "next/link";
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technologies }) => {
   return (
     <motion.div
-      className="bg-gray-800 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row"
+      className="bg-gradient-to-b from-[#121212] to-[#1E1E1E] rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row"
       whileHover={{ y: -5, transition: { duration: 0.3 } }}
     >
       <div
@@ -19,10 +19,10 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technolog
           whileHover={{ opacity: 1 }}
         >
           <div className="flex space-x-4">
-            <Link href={gitUrl} className="text-white hover:text-cyan-400 transition-colors duration-300">
+            <Link href={gitUrl} className="text-[#E0E0E0] hover:text-[#FF6B6B] transition-colors duration-300">
               <CodeBracketIcon className="h-10 w-10" />
             </Link>
-            <Link href={previewUrl} className="text-white hover:text-cyan-400 transition-colors duration-300">
+            <Link href={previewUrl} className="text-[#E0E0E0] hover:text-[#616060] transition-colors duration-300">
               <EyeIcon className="h-10 w-10" />
             </Link>
           </div>
@@ -30,23 +30,23 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technolog
       </div>
       <div className="p-6 md:w-2/3 flex flex-col justify-between">
         <div>
-          <h5 className="text-2xl font-bold mb-3 text-white">
+          <h5 className="text-2xl font-bold mb-3 text-[#FF6B6B]">
             {title}
           </h5>
-          <p className="text-gray-300 mb-4">{description}</p>
+          <p className="text-[#E0E0E0] mb-4">{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
-              <span key={index} className="px-3 py-1 text-sm text-cyan-400 bg-cyan-900 bg-opacity-25 rounded-full">
+              <span key={index} className="px-3 py-1 text-sm text-white bg-[#616060]  hover:bg-gray-400 rounded-full">
                 {tech}
               </span>
             ))}
           </div>
         </div>
         <div className="flex justify-end space-x-4">
-          <Link href={gitUrl} className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+          <Link href={gitUrl} className="text-sm text-gray-600 hover:text-gray-400 transition-colors duration-300">
             View Code
           </Link>
-          <Link href={previewUrl} className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+          <Link href={previewUrl} className="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-300">
             Live Demo
           </Link>
         </div>

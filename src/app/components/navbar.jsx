@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-10 ${
-        scrolled ? "bg-black bg-opacity-80 backdrop-blur-md" : "bg-transparent"
+        scrolled ? "bg-[#181818] bg-opacity-90 backdrop-blur-md" : "bg-transparent"
       } transition-all duration-300`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -52,7 +52,7 @@ const Navbar = () => {
               />
             </Link>
           </motion.span>
-          <div className="hidden md:block">
+          <div className="hidden md:block text-[#FFFFFF] hover:text-[#D3D3D3]">
             <ul className="flex space-x-4">
               {navLinks.map((link) => (
                 <motion.li
@@ -68,7 +68,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <motion.button
               onClick={toggleNavbar}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#FFFFFF] hover:text-[#D3D3D3] hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >

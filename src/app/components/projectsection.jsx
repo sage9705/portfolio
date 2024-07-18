@@ -53,7 +53,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative py-20">
+    <section id="projects" className="relative py-20 mt-[-150px] text-[#E0E0E0]">
       <div className="absolute inset-0" />
       <motion.div
         ref={ref}
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
         variants={sectionVariants}
         className="container mx-auto px-4 relative z-10"
       >
-        <h2 className="text-5xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-400">
+        <h2 className="text-5xl font-extrabold mb-12 text-center text-[#FF6B6B]">
           My Projects
         </h2>
         <motion.div className="flex flex-wrap justify-center items-center gap-4 mb-12">

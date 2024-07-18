@@ -87,18 +87,17 @@ const EmailSection = () => {
   };
 
   return (
-    <section id="contact">
-    <motion.section
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#121212] to-[#1f1f1f] text-[#e0e0e0]"
-      ref={ref}
-      variants={containerVariants}
-      initial="hidden"
-      animate={controls}
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-24 text-[#E0E0E0]">
+      <motion.div
+        className="container mx-auto px-4"
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12" variants={containerVariants}>
           <motion.div variants={childVariants}>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-[#FF6B6B]">
               Let&apos;s Connect
             </h2>
             <p className="mb-6 text-lg">
@@ -123,7 +122,7 @@ const EmailSection = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-green-500 text-white p-6 rounded-lg shadow-lg"
+                className="bg-gray-200 text-[#121212] p-6 rounded-lg shadow-lg"
               >
                 <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
                 <p>Your message has been sent successfully. I&apos;ll get back to you soon!</p>
@@ -139,7 +138,7 @@ const EmailSection = () => {
                     type="email"
                     id="email"
                     required
-                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    className="w-full px-3 py-2 bg-[#1E1E1E] border border-[#616060] rounded-lg focus:ring-2 focus:ring-[#616060] transition-all duration-300"
                     placeholder="job@example.com"
                   />
                 </motion.div>
@@ -152,7 +151,7 @@ const EmailSection = () => {
                     type="text"
                     id="subject"
                     required
-                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    className="w-full px-3 py-2 bg-[#1E1E1E] border border-[#616060] rounded-lg focus:ring-2 focus:ring-[#616060] transition-all duration-300"
                     placeholder="Hello there!"
                   />
                 </motion.div>
@@ -165,14 +164,14 @@ const EmailSection = () => {
                     id="message"
                     required
                     rows={4}
-                    className="w-full px-3 py-2 bg-[#092537] border border-[#33353F] rounded-lg focus:ring-2 focus:ring-[#4ce6de] transition-all duration-300"
+                    className="w-full px-3 py-2 bg-[#1E1E1E] border border-[#616060] rounded-lg focus:ring-2 focus:ring-[#616060] transition-all duration-300"
                     placeholder="Your message here..."
                   />
                 </motion.div>
                 <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 px-4 bg-gradient-to-r from-[#4ce6de] to-[#00ffc3] text-[#121212] font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full py-3 px-4 bg-[#FF6B6B] text-[#121212] font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -184,15 +183,14 @@ const EmailSection = () => {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-red-500 mt-4"
+                className="text-[#FF6B6B] mt-4"
               >
                 {error}
               </motion.p>
             )}
           </motion.div>
         </motion.div>
-      </div>
-    </motion.section>
+      </motion.div>
     </section>
   );
 };

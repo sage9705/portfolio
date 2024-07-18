@@ -2,83 +2,110 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const imageControls = useAnimation();
+  const [activeSkill, setActiveSkill] = useState(0);
+  const skills = ["Web Developer", "Data Engineer", "Tech Enthusiast"];
+  const colors = ["#FF6B6B", "#4ECDC4", "#FFD93D"];
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const interval = setInterval(() => {
+      setActiveSkill((prev) => (prev + 1) % skills.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    imageControls.start({
-      x: (mousePosition.x - window.innerWidth / 2) / 50,
-      y: (mousePosition.y - window.innerHeight / 2) / 50,
-    });
-  }, [mousePosition, imageControls]);
-
   return (
-    <section className="flex items-center justify-center relative py-16">
-      <div className="mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
+    <section className="min-h-screen overflow-hidden text-[#E0E0E0]">
+      <div className="container mx-auto px-4 py-16 relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className=""
+        >
+          {/* {skills.map((_, index) => (
+            <motion.div
+              key={index}
+              className="absolute inset-0"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: activeSkill === index ? 20 : 0,
+                opacity: activeSkill === index ? 0.1 : 0,
+              }}
+              transition={{ duration: 0.8 }}
+              style={{ backgroundColor: colors[index] }}
+            />
+          ))} */}
+        </motion.div>
+
+        <div className="relative z-10 flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
           >
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ffc3] to-[#4ce6de]">
-                Hello, I&apos;m Godwin. 
-              </span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-[#FF6B6B]">
+              Hello, I&apos;m Godwin
             </h1>
             <div className="h-16 mb-6">
               <TypeAnimation
-                sequence={[
-                  "Web Developer",
-                  1000,
-                  "Data Engineer",
-                  1000,
-                  "Problem Solver",
-                  1000,
-                  "Tech Enthusiast",
-                  1000,
-                ]}
+                sequence={skills.map((skill) => [skill, 2000]).flat()}
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}
-                className="text-2xl lg:text-4xl font-semibold text-white"
+                className="text-3xl md:text-5xl font-semibold text-[#616060]"
               />
             </div>
-            <p className="text-[#e0e0e0] text-lg mb-8 max-w-2xl">
-            I engineer robust software solutions and uncover insights through data science to create impactful digital experiences.
-            </p>
           </motion.div>
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:w-1/2 relative"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-64 h-64 md:w-80 md:h-80 mb-12"
           >
-            <motion.div
-              animate={imageControls}
-              className="w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative mt-5"
-            >
-              <Image
-                src="/images/hero_image.png"
-                alt="hero image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-full mb-[60px]"
-              />
-            </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00ffc3] to-[#4ce6de] opacity-20 rounded-full filter blur-3xl"></div>
+            <Image
+              src="/images/hero_image.png"
+              alt="Godwin"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-full"
+            />
+          </motion.div>
+
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl text-center max-w-2xl"
+          >
+            I engineer robust software solutions and uncover insights through data science to create impactful digital experiences.
+          </motion.p>
+
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-12 flex flex-wrap justify-center gap-4"
+          >
+            {/* {skills.map((skill, index) => (
+              <motion.button
+                key={skill}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 rounded-full text-sm md:text-base transition-colors duration-300 ${
+                  activeSkill === index 
+                    ? `bg-[${colors[index]}] text-[#121212]` 
+                    : "bg-[#1E1E1E] text-[#E0E0E0]"
+                }`}
+                onClick={() => setActiveSkill(index)}
+              >
+                {skill}
+              </motion.button>
+            ))} */}
           </motion.div>
         </div>
       </div>
