@@ -22,9 +22,9 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technolog
             <Link href={gitUrl} className="text-[#E0E0E0] hover:text-[#FF6B6B] transition-colors duration-300">
               <CodeBracketIcon className="h-10 w-10" />
             </Link>
-            {/* <Link href={previewUrl} className="text-[#E0E0E0] hover:text-[#616060] transition-colors duration-300">
+            <Link href={previewUrl} className="text-[#E0E0E0] hover:text-[#616060] transition-colors duration-300">
               <EyeIcon className="h-10 w-10" />
-            </Link> */}
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -46,9 +46,9 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, technolog
           <Link href={gitUrl} className="text-sm text-gray-600 hover:text-gray-400 transition-colors duration-300">
             View Code
           </Link>
-          {/* <Link href={previewUrl} className="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-300">
+          <Link href={previewUrl} className="text-sm text-gray-400 hover:text-gray-600 transition-colors duration-300">
             Live Demo
-          </Link> */}
+          </Link>
         </div>
       </div>
     </motion.div>

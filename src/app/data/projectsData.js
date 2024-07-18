@@ -6,7 +6,7 @@ const projectsData = [
     image: "/images/projects/spotiviz_welcome.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/sage9705/spotiviz.git",
-    previewUrl: "/",
+    previewUrl: "https://spotiviz-theta.vercel.app/",
     technologies: ["Next.js", "Chart.js", "NextAuth", "React.js", "TypeScript", "JavaScript", "Tailwind CSS", "Framer", "Spotify API"],
   },
   {
