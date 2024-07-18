@@ -53,7 +53,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative py-20 mt-[-150px] text-[#E0E0E0]">
+    <section id="projects" className="relative py-20 mt-[-230px] text-[#E0E0E0]">
       <div className="absolute inset-0" />
       <motion.div
         ref={ref}

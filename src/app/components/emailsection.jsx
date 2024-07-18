@@ -87,7 +87,8 @@ const EmailSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 text-[#E0E0E0]">
+    <section id="contact">
+    <section className="py-24 mb-[-200px] text-[#E0E0E0] ">
       <motion.div
         className="container mx-auto px-4"
         ref={ref}
@@ -191,6 +192,7 @@ const EmailSection = () => {
           </motion.div>
         </motion.div>
       </motion.div>
+    </section>
     </section>
   );
 };
