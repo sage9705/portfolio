@@ -87,8 +87,7 @@ const EmailSection = () => {
   };
 
   return (
-    <section id="contact">
-    <section className="py-24 mb-[-200px] text-[#E0E0E0] ">
+    <section className="mt-[-110px] mb-[-200px] text-[#E0E0E0] ">
       <motion.div
         className="container mx-auto px-4"
         ref={ref}
@@ -98,7 +97,7 @@ const EmailSection = () => {
       >
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-12" variants={containerVariants}>
           <motion.div variants={childVariants}>
-            <h2 className="text-4xl font-bold mb-6 text-[#FF6B6B]">
+            <h2 className="text-4xl font-bold mb-6 text-[#FF6B6B]" id="contact">
               Let&apos;s Connect
             </h2>
             <p className="mb-6 text-lg">
@@ -192,7 +191,6 @@ const EmailSection = () => {
           </motion.div>
         </motion.div>
       </motion.div>
-    </section>
     </section>
   );
 };
