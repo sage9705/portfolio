@@ -15,14 +15,14 @@ const CTA = () => {
         >
           Connect
         </Link>
-        <button
+        {/* <button
           onClick={() => setIsModalOpen(true)}
           className="px-8 py-3 text-center rounded-full bg-transparent text-gray-400 font-bold text-lg border-2 border-gray-400 transition-all duration-300 hover:bg-gray-400 hover:text-[#121212] hover:shadow-lg hover:shadow-[#4ECDC4]/30 transform hover:scale-105"
         >
           View CV
-        </button>
+        </button> */}
       </div>
-      <CVModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* <CVModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
     </>
   );
 };
